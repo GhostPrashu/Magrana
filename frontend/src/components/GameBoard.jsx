@@ -4,7 +4,7 @@ import { arrayMove, SortableContext, horizontalListSortingStrategy } from '@dnd-
 import Tile from './Tile';
 import Timer from './Timer';
 
-const GameBoard = ({ userId, onLogout }) => {
+const GameBoard = ({ userId }) => {
     const [word, setWord] = useState('');
     const [items, setItems] = useState([]); // Array of objects {id, letter}
     const [roundId, setRoundId] = useState(null);
@@ -97,13 +97,12 @@ const GameBoard = ({ userId, onLogout }) => {
     };
 
     return (
-        <div className="game-board">
-            <h2>Current Score: {score.toFixed(1)}</h2>
-            <div className="controls">
-                {!gameActive && <button onClick={startNewRound} disabled={loading}>
+        <div className="game-board" style={{ padding: '0 var(--gutter)' }}>
+            <h2 style={{ color: 'var(--color-primary-main)' }}>Current Score: {score.toFixed(1)}</h2>
+            <div className="controls" style={{ display: 'flex', gap: 'var(--spacing-2)', justifyContent: 'center' }}>
+                {!gameActive && <button onClick={startNewRound} disabled={loading} className="btn-primary btn-lg">
                     {loading ? 'Loading...' : 'Start New Round'}
                 </button>}
-                <button onClick={onLogout}>Logout</button>
             </div>
 
             {gameActive && (

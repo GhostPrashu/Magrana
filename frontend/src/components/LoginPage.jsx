@@ -28,25 +28,33 @@ const LoginPage = ({ onLogin }) => {
     return (
         <div className="login-container">
             <h2>Login to Magrana</h2>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="error" style={{ color: 'var(--color-error)' }}>{error}</p>}
             <form onSubmit={handleSubmit} className="login-form">
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login</button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-2)' }}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                        className={error ? 'error' : ''}
+                        style={{ width: '100%', boxSizing: 'border-box' }}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className={error ? 'error' : ''}
+                        style={{ width: '100%', boxSizing: 'border-box' }}
+                    />
+                    <button type="submit" className="btn-primary btn-lg" style={{ marginTop: 'var(--spacing-2)', width: '100%' }}>
+                        Login
+                    </button>
+                </div>
             </form>
-            <div className="login-hint">
+            <div className="login-hint" style={{ marginTop: 'var(--spacing-2)', fontSize: '14px', color: 'var(--color-neutral-dark-2)' }}>
                 <p>Hint: Use user1 / pass1</p>
             </div>
         </div>

@@ -19,15 +19,29 @@ function App() {
 
     return (
         <div className="app-container">
-            <header>
-                <h1>Magrana</h1>
-                {username && <p>Welcome, {username}</p>}
+            <header style={{
+                width: '100%',
+                maxWidth: '1024px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: 'var(--spacing-5)'
+            }}>
+                <div>
+                    <h1 style={{ fontSize: '32px' }}>Magrana</h1>
+                    {username && <p style={{ color: 'var(--color-neutral-dark-2)', marginTop: '4px' }}>Welcome, {username}</p>}
+                </div>
+                {userId && (
+                    <button onClick={handleLogout} className="btn-secondary btn-md">
+                        Logout
+                    </button>
+                )}
             </header>
-            <main>
+            <main style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 {!userId ? (
                     <LoginPage onLogin={handleLogin} />
                 ) : (
-                    <GameBoard userId={userId} onLogout={handleLogout} />
+                    <GameBoard userId={userId} />
                 )}
             </main>
         </div>

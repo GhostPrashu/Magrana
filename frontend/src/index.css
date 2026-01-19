@@ -1,141 +1,212 @@
 :root {
-    --primary-color: #646cff;
-    --bg-color: #242424;
-    --text-color: rgba(255, 255, 255, 0.87);
-    --tile-bg: #3a3a3a;
-    --tile-border: #646cff;
+    /* COLORS - Primary */
+    --color-primary-main: #3377FF;
+    --color-primary-dark: #2659BF;
+    --color-primary-light: #99BBFF;
+    --color-primary-subtle: #E3EDFF;
+
+    /* COLORS - State */
+    --color-success: #06C270;
+    --color-info: #0063F7;
+    --color-warning: #FFCC00;
+    --color-error: #FF3B3B;
+
+    /* COLORS - Neutral */
+    --color-neutral-dark-1: #3A3A3C;
+    --color-neutral-dark-2: #6B7588;
+    --color-neutral-dark-3: #8F90A6;
+    --color-neutral-dark-4: #C7C9D9;
+
+    --color-neutral-light-1: #DDE5E9;
+    --color-neutral-light-2: #EBEBF0;
+    --color-neutral-light-3: #F2F2F5;
+    --color-neutral-light-4: #FAFAFC;
+
+    /* TYPOGRAPHY */
+    --font-display: 'Inter', sans-serif;
+    --font-body: 'Mulish', sans-serif;
+
+    /* SPACING */
+    --gutter: 30px;
+    --spacing-1: 8px;
+    --spacing-2: 16px;
+    --spacing-3: 24px;
+    --spacing-4: 32px;
+    --spacing-5: 40px;
+    --spacing-8: 64px;
+    --spacing-10: 80px;
+    --spacing-12: 96px;
+    --spacing-15: 120px;
 }
 
+/* BASE RESET */
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
+    background-color: var(--color-neutral-light-4);
+    color: var(--color-neutral-dark-1);
+    line-height: 1.7;
 }
 
-#root {
-    max-width: 1280px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--color-neutral-dark-1);
+}
+
+h1 {
+    font-size: 44px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+/* UTILITIES */
+.container {
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    width: 100%;
+    padding: 0 var(--gutter);
 }
 
+/* BUTTONS */
+button {
+    font-family: var(--font-body);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    /* Optional, strict guide didn't specify radius but implied standard components */
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+/* Button Variants */
+.btn-primary {
+    background-color: var(--color-primary-main);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-primary:disabled {
+    background-color: var(--color-neutral-dark-3);
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: var(--color-neutral-light-2);
+    color: var(--color-neutral-dark-1);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-neutral-light-1);
+}
+
+/* Button Sizes */
+.btn-sm {
+    padding: 0 12px;
+    height: 24px;
+    font-size: 14px;
+}
+
+.btn-md {
+    padding: 0 16px;
+    height: 32px;
+    font-size: 16px;
+}
+
+.btn-lg {
+    padding: 0 24px;
+    height: 48px;
+    font-size: 18px;
+}
+
+
+/* INPUTS */
+input {
+    font-family: var(--font-body);
+    font-size: 16px;
+    /* Body size matching? Guide says Body 20/18/16/14 */
+    padding: 12px;
+    border: 1px solid var(--color-neutral-dark-4);
+    background-color: white;
+    color: var(--color-neutral-dark-1);
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-primary-main);
+    box-shadow: 0 0 0 2px var(--color-primary-subtle);
+}
+
+input.error {
+    border-color: var(--color-error);
+}
+
+/* Layout Specifics */
 .app-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    width: 100%;
+    min-height: 100vh;
+    padding-top: var(--spacing-8);
 }
 
-/* Login Styles */
 .login-container {
+    background: white;
+    padding: var(--spacing-5);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    background: #1a1a1a;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    gap: var(--spacing-3);
+    width: 100%;
+    max-width: 400px;
 }
 
-.login-form input {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    width: 200px;
-    background: #333;
-    border: 1px solid #555;
-    color: white;
-    border-radius: 4px;
-}
-
-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #535bf2;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Game Board Styles */
 .game-board {
+    width: 100%;
+    max-width: 1024px;
+    /* Desktop */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    width: 100%;
-}
-
-.controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.timer {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffcc00;
+    gap: var(--spacing-4);
 }
 
 .tiles-container {
     display: flex;
-    gap: 10px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    min-height: 80px;
-    justify-content: center;
     flex-wrap: wrap;
-}
-
-.tile {
-    width: 60px;
-    height: 60px;
-    background: var(--tile-bg);
-    border: 2px solid var(--tile-border);
-    border-radius: 8px;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: grab;
-    user-select: none;
-    touch-action: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.tile:active {
-    cursor: grabbing;
-}
-
-.error {
-    color: #ff4d4d;
-}
-
-.status-message {
-    font-size: 1.2rem;
-    margin-top: 20px;
-    color: #4dffa6;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+    background-color: var(--color-neutral-light-2);
+    border-radius: 12px;
+    width: 100%;
 }
